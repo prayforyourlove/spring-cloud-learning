@@ -11,7 +11,8 @@
 	<modules>
 		<module>service-provider-user</module>
 		<module>service-consume-movie</module>
-	</modules>
+        <module>discovery-eureka-server</module>
+    </modules>
 
 	<name>spring-cloud-learning</name>
 	<description>Demo project for Spring Boot</description>
