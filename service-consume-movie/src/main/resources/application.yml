@@ -1,2 +1,20 @@
 server:
   port : 888
+spring:
+  application:
+    name: service-consume-movie
+eureka:
+  client:
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka #服务注册路径
+      healthcheck:
+        enabled: true
+  instance:
+    prefer-ip-address: true  #是否使用ip地址作为标识主机名
+    #自定义配置主机名
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+
+#配置文件 自定义ribbon策略
+service-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
