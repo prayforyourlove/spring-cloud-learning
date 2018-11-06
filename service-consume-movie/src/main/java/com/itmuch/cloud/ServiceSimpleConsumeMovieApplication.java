@@ -1,15 +1,18 @@
 package com.itmuch.cloud;
 
+import com.itmuch.cloud.config.ExcludeFromComponentScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication
 @EnableEurekaClient
 // 代码编写自定义配置ribbon 策略
-/*@RibbonClient(name = "service-provider-user",configuration = RibbonConfiguration.class)
-@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = ExcludeFromComponentScan.class)})*/
+/*@RibbonClient(name = "service-provider-user",configuration = RibbonConfiguration.class)*/
+@ComponentScan(excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION,value = ExcludeFromComponentScan.class)})
 @EnableFeignClients
 public class ServiceSimpleConsumeMovieApplication {
 

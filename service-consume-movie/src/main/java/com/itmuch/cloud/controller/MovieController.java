@@ -35,4 +35,5 @@ public class MovieController {
     public User testGet(User user) {
         return this.userControllerFeign.getUser(user.getId(), user.getUsername(), user.getName(), user.getAge());
     }
+
 }
