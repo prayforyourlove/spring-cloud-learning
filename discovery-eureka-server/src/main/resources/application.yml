@@ -6,9 +6,19 @@ eureka:
     fetch-registry: false #是否检索服务
     service-url:
       defaultZone: http://user:password@localhost:8761/eureka
+   #eureka 控制面板设置
+  dashboard:
+    path: /
+    enabled: true
+  #关闭eureka自动保护
+#  server:
+#    enable-self-preservation: false
+#    eviction-interval-timer-in-ms: 3000
+#是否开启基本的鉴权，默认为true
 security:
   basic:
     enabled: true
+  #指定默认的用户名，
   user:
     name: user
     password: password

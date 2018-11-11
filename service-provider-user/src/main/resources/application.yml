@@ -37,3 +37,4 @@ eureka:
     prefer-ip-address: true  #是否使用ip地址作为标识主机名
     #自定义配置主机名
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 30

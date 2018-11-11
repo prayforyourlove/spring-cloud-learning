@@ -15,6 +15,10 @@ eureka:
     prefer-ip-address: true  #是否使用ip地址作为标识主机名
     #自定义配置主机名
     instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    #eureka客户端发送心跳所需的频率（以秒为单位） 默认为30秒一次
+    lease-renewal-interval-in-seconds: 30
+    #配置appname 则使spring.application.name 失效 注册eureka 上面的名称
+    appname: movie-server
 #配置文件 自定义ribbon策略
 #service-provider-user:
 #  ribbon:
@@ -22,7 +26,7 @@ eureka:
 
 
 # 解决第一次请求报超时异常的方案：
-#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 1000
 # 或者：
 # hystrix.command.default.execution.timeout.enabled: false
 # 或者：

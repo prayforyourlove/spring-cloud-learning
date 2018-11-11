@@ -9,6 +9,8 @@ package com.itmuch.cloud.config;
 /*
 @Configuration
 @ExcludeFromComponentScan
+// 代码编写自定义配置ribbon 策略
+@RibbonClient(name = "service-provider-user",configuration = RibbonConfiguration.class)
 public class RibbonConfiguration {
 
     @Bean

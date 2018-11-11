@@ -20,8 +20,13 @@ feign 默认配置如下: 详情请看https://cloud.spring.io/spring-cloud-stati
 同时要注意的是： 如果使用url属性 直接指定访问地址时，name一定要命名
 Previously, using the url attribute, did not require the name attribute. Using name is now required.
 
-@FeignClient(name = "service-provider-user",configuration = FeignConfiguration.class)*/
-@FeignClient(name = "service-provider-user")
+//为feign 指定feign 配置类
+@FeignClient(name = "service-provider-user",configuration = FeignConfiguration.class)
+
+//为feign指定hystrix fallback类
+@FeignClient(name = "service-provider-user",fallback = UserControllerFeignFallback.class)*/
+
+@FeignClient(name = "service-provider-user",fallbackFactory = UserControllerFeignFallbackFactory.class)
 public interface UserControllerFeign {
 
     // 两个坑：1. @GetMapping不支持   2. @PathVariable得设置value
