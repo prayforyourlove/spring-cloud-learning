@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: discovery-hystrix-turbine
+server:
+  port: 8031
+
+
+eureka:
+  client:
+    register-with-eureka: true #是否向服务注册中心注册自己
+    fetch-registry: true #是否检索服务
+    service-url:
+      defaultZone: http://user:password@localhost:8761/eureka #服务注册路径
+      healthcheck:
+        enabled: true
+  instance:
+    prefer-ip-address: true  #是否使用ip地址作为标识主机名
+    #自定义配置主机名
+    instance-id: ${spring.application.name}:${spring.cloud.client.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 30
+
+# 监控单个服务
+#turbine:
+#  aggregator:
+#    clusterConfig: SERVICE-CONSUME-MOVIE
+#  appConfig: service-consume-movie
+# 监控集群
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: service-consume-movie,service-provider-user
+  clusterNameExpression: "'default'"
