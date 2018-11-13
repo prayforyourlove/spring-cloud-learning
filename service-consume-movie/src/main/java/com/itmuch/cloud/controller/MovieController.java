@@ -2,6 +2,8 @@ package com.itmuch.cloud.controller;
 
 import com.itmuch.cloud.bean.User;
 import com.itmuch.cloud.feign.UserControllerFeign;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -22,6 +24,18 @@ public class MovieController {
 
   /*  @Autowired
     private RestTemplate restTemplate;
+
+//        切换Hystrix以使用与调用者相同的线程
+//        THREAD - 它在一个单独的线程上执行，并发请求受到线程池中线程数的限制
+//        SEMAPHORE - 它在调用线程上执行，并发请求受信号量计数的限制
+//        默认设置和建议设置是使用线程隔离（THREAD）
+//        HystrixObservableCommands使用信号量隔离（SEMAPHORE）运行HystrixCommands。
+//        文档: {@see <a href="https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.strategy"/>
+//        默认配置:{@link com.netflix.hystrix.HystrixCommandProperties#default_executionIsolationStrategy}
+//    @HystrixCommand(fallbackMethod = "stubMyService",
+//            commandProperties = {
+//              @HystrixProperty(name="execution.isolation.strategy", value="SEMAPHORE")
+//            })
 
     @GetMapping("/movie/{id}")
     @HystrixCommand(fallbackMethod = "findByIdByFallBack")

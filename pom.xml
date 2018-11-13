@@ -13,6 +13,7 @@
 		<module>service-consume-movie</module>
         <module>discovery-eureka-server</module>
         <module>discovery-hystrix-turbine</module>
+        <module>api-gateway-zuul</module>
     </modules>
 
 	<name>spring-cloud-learning</name>
