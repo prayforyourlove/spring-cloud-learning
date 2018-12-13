@@ -1,6 +1,7 @@
 package com.itmuch.cloud;
 
 
+import com.itmuch.cloud.filter.PreZuulFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -26,5 +27,10 @@ public class ApiGateWayApplication {
         return new PatternServiceRouteMapper(
                 "(?<name>^.+)-(?<version>v.+$)",
                 "${version}/${name}");
+    }
+
+    @Bean
+    public PreZuulFilter preZuulFilter(){
+        return  new PreZuulFilter();
     }
 }

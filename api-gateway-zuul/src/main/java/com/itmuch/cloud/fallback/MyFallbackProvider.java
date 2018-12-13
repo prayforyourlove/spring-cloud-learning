@@ -15,7 +15,7 @@ import java.io.InputStream;
 public class MyFallbackProvider implements ZuulFallbackProvider {
   @Override
   public String getRoute() {
-    //api服务id，如果需要所有调用都支持回退，则return "*"或return nul
+    //api服务id，如果需要所有调用都支持回退，则return "*"或return null
     return "service-provider-user";
   }
 
