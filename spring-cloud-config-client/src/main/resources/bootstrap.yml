@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8080
+      profile: dev
+      label: master #当configserver 后端存储是git时 默认为master
+  application:
+    name: config-client
+

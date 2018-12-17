@@ -14,6 +14,8 @@
         <module>discovery-eureka-server</module>
         <module>discovery-hystrix-turbine</module>
         <module>api-gateway-zuul</module>
+		<module>spring-cloud-config</module>
+		<module>spring-cloud-config-client</module>
     </modules>
 
 	<name>spring-cloud-learning</name>
