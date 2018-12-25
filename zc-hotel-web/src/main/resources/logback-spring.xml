@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="logLevel" source="logging.level" defaultValue="info"/>
+    <springProperty scope="context" name="logCharset" source="logging.charset" defaultValue="UTF-8"/>
+    <springProperty scope="context" name="logPath" source="logging.path" defaultValue="/data/logback"/>
+    <springProperty scope="context" name="logServerAddress" source="logging.logServerAddress" defaultValue="logServerAddress"/>
+    <springProperty scope="context" name="maxFileSize" source="logging.maxFileSize" defaultValue="200MB"/>
+    <springProperty scope="context" name="maxHistoryDay" source="logging.maxHistoryDay" defaultValue="180"/>
+    <springProperty scope="context" name="maxDepthPerThrowable" source="logging.maxDepthPerThrowable" defaultValue="30"/>
+    <springProperty scope="context" name="logName" source="spring.application.name" defaultValue="logName"/>
+    <springProperty scope="context" name="projectName" source="spring.application.name" defaultValue="projectName"/>
+
+
+    <property name="projectTag" value="${projectName}" />
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 输出到控制台 -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSSZ} %level ${projectTag} %X{sessionId} %thread
+                %class.%method:%line>>%msg%n
+            </pattern>
+            <charset>${logCharset}</charset>
+        </encoder>
+    </appender>
+
+    <root level="${logLevel}">
+        <!-- 输出到控制台 -->
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>
