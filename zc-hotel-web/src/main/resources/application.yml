@@ -12,7 +12,7 @@ spring:
     password: root123
 server:
   port: 888
-  context-path: /zc-hotel-web/remoting
+  context-path: /zc-hotel-web
 
 
 mapper:
@@ -20,4 +20,4 @@ mapper:
   not-empty: false
   identity: MYSQL
 logging:
-  level: debug
+  level: info
