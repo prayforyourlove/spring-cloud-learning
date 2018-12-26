@@ -10,6 +10,6 @@
     <result column="price" jdbcType="INTEGER" property="price" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
-    <result column="update" jdbcType="TIMESTAMP" property="update" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 </mapper>
