@@ -1,13 +1,12 @@
 package com.dzsw.wqh.controller;
 
 
-import com.dzsw.wqh.enumeration.ResultEnum;
 import com.dzsw.wqh.model.UserEntity;
-import com.dzsw.wqh.protocol.ResultResponse;
 import com.dzsw.wqh.service.UserService;
 import com.dzsw.wqh.util.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,38 +22,37 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value="/register")
-    public ResultResponse regitster(@Validated @RequestBody UserEntity user) {
+    public String regitster(Model model,@Validated @RequestBody UserEntity user) {
         log.info("注册用户请求参数:{}", JsonUtils.objectToJson(user));
         String userName = user.getUserName();
         UserEntity userEntity = userService.checkUserData(userName,null);
         if (userEntity.getId()!=null){
-            return ResultResponse.buildResponse(ResultEnum.USER_REPEAT);
+            model.addAttribute("result","用户已注册");
+            return "login";
         }
         boolean register = userService.register(user);
-        ResultResponse resultResponse;
         if(register){
-            resultResponse=ResultResponse.buildResponse(ResultEnum.SUCCESS);
-        }else {
-            resultResponse=ResultResponse.buildResponse(ResultEnum.FAIL);
+            model.addAttribute("result","注册成功,请登陆");
+           return "login";
         }
-        return resultResponse;
+        model.addAttribute("result","注册失败,请重新注册");
+        return "register";
     }
 
 
     @PostMapping(value="/login")
-    public ResultResponse login(@Validated @RequestBody UserEntity user) {
+    public String login(Model model, @Validated @RequestBody UserEntity user) {
 
         log.info("登陆用户请求参数:{}", JsonUtils.objectToJson(user));
         String userName = user.getUserName();
         String passWord = user.getPassWord();
         UserEntity userEntity = userService.checkUserData(userName,passWord);
-        ResultResponse resultResponse;
         if (userEntity.getId()==null){
-            resultResponse=ResultResponse.buildResponse(ResultEnum.FAIL);
-        }else {
-            resultResponse=ResultResponse.buildResponse(ResultEnum.SUCCESS);
+            return "register";
         }
-        return resultResponse;
+        model.addAttribute("user",userEntity);
+        return "index";
+
     }
 
 }

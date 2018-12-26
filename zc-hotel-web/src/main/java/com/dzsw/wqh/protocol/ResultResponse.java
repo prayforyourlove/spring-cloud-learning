@@ -1,6 +1,5 @@
 package com.dzsw.wqh.protocol;
 
-import com.dzsw.wqh.enumeration.ResultEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -29,11 +28,4 @@ public  class ResultResponse
 		this.data = data;
 	}
 
-	public static ResultResponse buildResponseData(ResultEnum resultEnum,Object data) {
-		return new ResultResponse(resultEnum.getCode(), resultEnum.getMessage(), data);
-	}
-
-	public static ResultResponse buildResponse(ResultEnum resultEnum) {
-		return buildResponseData(resultEnum, null);
-	}
 }

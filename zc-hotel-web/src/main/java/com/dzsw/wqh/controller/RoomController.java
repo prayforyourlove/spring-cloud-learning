@@ -1,12 +1,12 @@
 package com.dzsw.wqh.controller;
 
 
-import com.dzsw.wqh.enumeration.ResultEnum;
 import com.dzsw.wqh.model.RoomEntity;
-import com.dzsw.wqh.protocol.ResultResponse;
 import com.dzsw.wqh.service.RoomService;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,16 +23,15 @@ public class RoomController {
     private RoomService roomService;
 
     @GetMapping()
-    public ResultResponse queryRoom(@RequestParam(value = "pageNum") Integer pageNum,
-                                    @RequestParam(value = "pageSize")Integer pageSize) {
-        List<RoomEntity>  roomEntities= roomService.queryRoomByPage(pageNum, pageSize);
-        ResultResponse resultResponse;
-        if (roomEntities.size()!=0){
-            resultResponse = ResultResponse.buildResponseData(ResultEnum.SUCCESS, roomEntities);
-        }else {
-            resultResponse = ResultResponse.buildResponse(ResultEnum.FAIL);
-        }
-        return resultResponse;
+    public String queryRoom(Model model, @RequestParam(value = "pageNum") Integer pageNum,
+                            @RequestParam(value = "pageSize")Integer pageSize) {
+        PageInfo<RoomEntity> pageInfo = roomService.queryRoomByPage(pageNum, pageSize);
+        List<RoomEntity> roomEntitys = pageInfo.getList();
+        long total = pageInfo.getTotal();
+        model.addAttribute("room",roomEntitys);
+        model.addAttribute("total",total);
+        //跳转到查询房间列表
+        return "list";
     }
 
 
