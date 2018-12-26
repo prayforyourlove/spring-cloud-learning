@@ -5,10 +5,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -28,7 +25,7 @@ public class UserEntity implements Serializable {
     @NotBlank(message = "密码不能为空")
     private String passWord;
 
-    @Size(min=6 ,max= 20 ,message = "手机号码长度不符合标准")
+    @Size(min=11 ,max= 11 ,message = "手机号码长度不符合标准")
     private String mobile;
 
     private String sex;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dzsw.wqh.mapper.RoomEntityMapper">
+  <resultMap id="BaseResultMap" type="com.dzsw.wqh.model.RoomEntity">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="room_no" jdbcType="INTEGER" property="roomNo" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>
