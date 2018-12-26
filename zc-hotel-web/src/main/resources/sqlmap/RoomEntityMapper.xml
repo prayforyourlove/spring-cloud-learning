@@ -18,6 +18,6 @@
   <update id="reduceRoomCount">
     UPDATE room
     SET stock = stock - 1, sales = sales + 1
-    WHERE goods_id = #{roomNo}
+    WHERE room_no = #{roomNo} and stock>0
   </update>
 </mapper>

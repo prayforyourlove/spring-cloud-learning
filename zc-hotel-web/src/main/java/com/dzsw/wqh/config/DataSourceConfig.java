@@ -2,6 +2,7 @@
 package com.dzsw.wqh.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,6 +19,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import tk.mybatis.spring.annotation.MapperScan;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Oilyy基础配置
@@ -90,6 +92,7 @@ public class DataSourceConfig
 			// 指定mapper xml目录
 			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 			bean.setMapperLocations(resolver.getResources("classpath*:sqlmap/*Mapper.xml"));
+			bean.setPlugins(new Interceptor[]{pageHelper()});
 			return bean.getObject();
 		} catch (Exception e) {
 			log.error("创建sqlSessionFactory出错:", e);
@@ -103,6 +106,17 @@ public class DataSourceConfig
 			@Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}
-
+	@Bean
+	public PageHelper pageHelper(){
+		//分页插件
+		PageHelper pageHelper = new PageHelper();
+		Properties properties = new Properties();
+		properties.setProperty("reasonable", "true");
+		properties.setProperty("supportMethodsArguments", "true");
+		properties.setProperty("returnPageInfo", "check");
+		properties.setProperty("params", "count=countSql");
+		pageHelper.setProperties(properties);
+		return pageHelper;
+	}
 
 }

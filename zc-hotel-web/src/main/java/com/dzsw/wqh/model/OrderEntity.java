@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "order")
+@Table(name = "user_order")
 @Data
 public class OrderEntity  implements Serializable {
     @Id

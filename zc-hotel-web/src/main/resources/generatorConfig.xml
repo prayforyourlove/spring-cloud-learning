@@ -64,7 +64,7 @@
         <table tableName="user"  domainObjectName="UserEntity">
         <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <table tableName="order"  domainObjectName="OrderEntity">
+        <table tableName="user_order"  domainObjectName="OrderEntity">
             <generatedKey column="order_no" sqlStatement="JDBC"/>
         </table>
         <table tableName="room"  domainObjectName="RoomEntity">

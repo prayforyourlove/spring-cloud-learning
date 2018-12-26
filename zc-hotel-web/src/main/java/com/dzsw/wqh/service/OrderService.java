@@ -4,6 +4,7 @@ import com.dzsw.wqh.mapper.OrderEntityMapper;
 import com.dzsw.wqh.mapper.RoomEntityMapper;
 import com.dzsw.wqh.model.OrderEntity;
 import com.dzsw.wqh.model.RoomEntity;
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,7 @@ public class OrderService {
     }
 
     public List<OrderEntity> queryRoomByPage(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
         List<OrderEntity> orderEntities = orderEntityMapper.selectAll();
         return orderEntities;
     }
