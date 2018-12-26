@@ -57,10 +57,14 @@
             <artifactId>mapper-spring-boot-starter</artifactId>
             <version>1.2.4</version>
         </dependency>
+
+        <!-- freemarker模板引擎依赖包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

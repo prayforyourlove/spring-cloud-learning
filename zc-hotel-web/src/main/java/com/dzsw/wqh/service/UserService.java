@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Optional;
 
-@Service()
+@Service
 public class UserService {
 
     @Autowired
