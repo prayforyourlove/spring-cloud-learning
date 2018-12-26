@@ -72,10 +72,12 @@
                                    class="btn btn-sm btn-white btn-bitbucket">
                                     <i class="fa fa-edit"></i> 预订
                                 </a>
+
                                 <a href="${base}/delete/"
                                    class="btn btn-sm btn-white btn-bitbucket">
                                     <i class="fa fa-edit"></i> 删除
                                 </a>
+
                                 <a href="${base}/add"
                                    class="btn btn-sm btn-white btn-bitbucket">
                                     <i class="fa fa-edit"></i> 添加

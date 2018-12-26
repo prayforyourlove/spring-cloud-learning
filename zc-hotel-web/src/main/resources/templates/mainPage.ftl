@@ -110,6 +110,7 @@
         justify-content: space-around;
     }
 
+
     .box-center{
         width: 28%;
         padding: 20px;

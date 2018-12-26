@@ -70,6 +70,7 @@
 					$("#nloginpwd").focus();
 					return false;
 				}
+
 				return true;
 			},
 			doLogin:function() {

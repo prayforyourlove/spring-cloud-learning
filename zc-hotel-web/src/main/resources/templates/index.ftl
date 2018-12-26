@@ -47,6 +47,7 @@
                     <div class="logo-element">Flash
                     </div>
                 </li>
+
                 <li class="loading">
                     <a href="#">
                         <i class="fa fa-file"></i>
