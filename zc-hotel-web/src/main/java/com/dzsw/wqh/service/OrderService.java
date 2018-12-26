@@ -4,13 +4,12 @@ import com.dzsw.wqh.mapper.OrderEntityMapper;
 import com.dzsw.wqh.mapper.RoomEntityMapper;
 import com.dzsw.wqh.model.OrderEntity;
 import com.dzsw.wqh.model.RoomEntity;
-import com.dzsw.wqh.plugins.PageHelper;
-import com.dzsw.wqh.plugins.PageHelper.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -40,10 +39,9 @@ public class OrderService {
         return y>0 ;
     }
 
-    public Page queryRoomByPage(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum,pageSize);
-        orderEntityMapper.selectAll();
-        return  PageHelper.endPage();
+    public List<OrderEntity> queryRoomByPage(Integer pageNum, Integer pageSize) {
+        List<OrderEntity> orderEntities = orderEntityMapper.selectAll();
+        return orderEntities;
     }
 
     public boolean deleteOrderByOrderNo(Integer orderNo) {

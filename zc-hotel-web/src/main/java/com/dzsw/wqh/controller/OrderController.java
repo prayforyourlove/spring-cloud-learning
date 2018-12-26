@@ -1,7 +1,6 @@
 package com.dzsw.wqh.controller;
 
 import com.dzsw.wqh.enumeration.ResultEnum;
-import com.dzsw.wqh.plugins.PageHelper.Page;
 import com.dzsw.wqh.model.OrderEntity;
 import com.dzsw.wqh.protocol.ReserveRoomRequest;
 import com.dzsw.wqh.protocol.ResultResponse;
@@ -11,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -40,10 +41,10 @@ public class OrderController {
     @GetMapping()
     public ResultResponse queryOrder(@RequestParam(value = "pageNum") Integer pageNum,
                                     @RequestParam(value = "pageSize")Integer pageSize) {
-        Page page = orderService.queryRoomByPage(pageNum, pageSize);
+        List<OrderEntity> orderEntities = orderService.queryRoomByPage(pageNum, pageSize);
         ResultResponse resultResponse;
-        if (page.getTotal()!=0){
-            resultResponse = ResultResponse.buildResponseData(ResultEnum.SUCCESS, page.getResult());
+        if (orderEntities.size()!=0){
+            resultResponse = ResultResponse.buildResponseData(ResultEnum.SUCCESS, orderEntities);
         }else {
             resultResponse = ResultResponse.buildResponse(ResultEnum.FAIL);
         }
