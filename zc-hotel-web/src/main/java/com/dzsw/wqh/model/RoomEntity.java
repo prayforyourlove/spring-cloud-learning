@@ -12,7 +12,7 @@ import java.util.Date;
 public class RoomEntity implements Serializable {
     @Id
     @Column(name = "room_no")
-    @GeneratedValue(generator = "JDBC",strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "JDBC")
     private Integer roomNo;
 
     private String type;
