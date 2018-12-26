@@ -15,11 +15,17 @@ public class RoomEntity implements Serializable {
     @GeneratedValue(generator = "JDBC")
     private Integer roomNo;
 
+    //00 标间 01 双人间 02豪华套间 03 总统套房
     private String type;
 
     private Integer price;
 
-    private Integer count;
+    @Column(name = "total_stock")
+    private Integer totalStock;
+
+    private Integer stock;
+
+    private Integer sales;
 
     @Column(name = "insert_time")
     @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
