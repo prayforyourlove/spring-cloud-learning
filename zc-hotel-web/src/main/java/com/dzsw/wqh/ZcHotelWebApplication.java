@@ -7,7 +7,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
 
-@SpringBootApplication()
+@SpringBootApplication
 @ComponentScan("com.dzsw.wqh.*")
 public class ZcHotelWebApplication extends SpringBootServletInitializer
 {
