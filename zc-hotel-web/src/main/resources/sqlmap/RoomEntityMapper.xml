@@ -8,8 +8,16 @@
     <id column="room_no" jdbcType="INTEGER" property="roomNo" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="price" jdbcType="INTEGER" property="price" />
-    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="total_stock" jdbcType="INTEGER" property="totalStock" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="sales" jdbcType="INTEGER" property="sales" />
     <result column="insert_time" jdbcType="TIMESTAMP" property="insertTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
+
+  <update id="reduceRoomCount">
+    UPDATE room
+    SET stock = stock - 1, sales = sales + 1
+    WHERE goods_id = #{roomNo}
+  </update>
 </mapper>

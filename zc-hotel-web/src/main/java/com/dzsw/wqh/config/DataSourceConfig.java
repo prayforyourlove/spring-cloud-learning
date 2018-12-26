@@ -2,7 +2,9 @@
 package com.dzsw.wqh.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.dzsw.wqh.plugins.PageHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -89,6 +91,9 @@ public class DataSourceConfig
 			// 指定mapper xml目录
 			ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 			bean.setMapperLocations(resolver.getResources("classpath*:sqlmap/*Mapper.xml"));
+			//添加分页插件
+			Interceptor[] plugins={new PageHelper()};
+			bean.setPlugins(plugins);
 			return bean.getObject();
 		} catch (Exception e) {
 			log.error("创建sqlSessionFactory出错:", e);
