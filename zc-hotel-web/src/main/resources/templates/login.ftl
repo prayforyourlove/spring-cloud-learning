@@ -17,7 +17,7 @@
 <form id="formlogin" method="post" onsubmit="return false;">
     <div class=" w1" id="entry">
         <div class="mc " id="bgDiv">
-            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(/zc-hotel-web/images/comfort-live.jpg) 0px 0px no-repeat;">
+            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(/zc-hotel-web/images/t-flash2.jpg) 0px 0px no-repeat;">
 			</div>
             <div class="form ">
                 <div class="item fore1">
