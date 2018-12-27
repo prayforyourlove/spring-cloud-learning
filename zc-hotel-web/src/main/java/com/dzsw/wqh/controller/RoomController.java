@@ -31,7 +31,7 @@ public class RoomController {
         model.addAttribute("room",roomEntitys);
         model.addAttribute("total",total);
         //跳转到查询房间列表
-        return "list";
+        return "search";
     }
 
 

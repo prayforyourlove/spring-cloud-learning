@@ -36,7 +36,7 @@ public class OrderController {
         }
         model.addAttribute("result","预定房间失败");
         //跳转到房间列表
-        return "mainPage";
+        return "search";
     }
 
     @GetMapping()
