@@ -16,7 +16,6 @@
         <module>api-gateway-zuul</module>
 		<module>spring-cloud-config</module>
 		<module>spring-cloud-config-client</module>
-		<module>zc-hotel-web</module>
     </modules>
 
 	<name>spring-cloud-learning</name>
